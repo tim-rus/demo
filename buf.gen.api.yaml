@@ -1,0 +1,21 @@
+version: v2
+inputs:
+  - directory: proto
+plugins:
+  # server
+  - local: protoc-gen-go
+    out: ./server/interal/proto/apigen
+    opt:
+      - module=demo/interal/proto/apigen
+  - local: protoc-gen-connect-go
+    out: ./server/interal/proto/apigen
+    opt:
+      - module=demo/interal/proto/apigen
+
+  # ui
+  - local: protoc-gen-es
+    out: ./ui/src/proto
+    opt: target=ts
+  - local: protoc-gen-connect-es
+    out: ./ui/src/proto
+    opt: target=ts

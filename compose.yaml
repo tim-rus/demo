@@ -1,0 +1,49 @@
+networks:
+  demo_net:
+    name: demo_net
+    driver: bridge
+
+services:
+
+  server:
+    build:
+      context: .
+      dockerfile: docker/server.Dockerfile
+      args:
+        EXPOSE_PORT: ${SERVER_DOCKER_PORT}
+    container_name: server
+    ports:
+      - ${SERVER_HOST_PORT}:${SERVER_DOCKER_PORT}
+    environment:
+      HOST: "0.0.0.0"
+      PORT: ${SERVER_DOCKER_PORT}
+    networks:
+      - demo_net
+    # restart: unless-stopped
+
+  tg:
+    build:
+      context: .
+      dockerfile: docker/tg.Dockerfile
+    container_name: tg
+    depends_on:
+      - server
+    environment:
+      TOKEN: ${TG_TOKEN}
+      SERVER_BASE_URL: http://server:${SERVER_DOCKER_PORT}
+    networks:
+      - demo_net
+    # restart: unless-stopped
+
+  ui:
+    build:
+      context: .
+      dockerfile: docker/ui.Dockerfile
+      args:
+        VITE_SERVER_BASE_URL: ${SERVER_MODE}://${SERVER_HOST}:${SERVER_HOST_PORT}
+    container_name: ui
+    ports:
+      - ${UI_HOST_PORT}:${UI_DOCKER_PORT}
+    networks:
+      - demo_net
+    # restart: unless-stopped

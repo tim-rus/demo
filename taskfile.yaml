@@ -1,0 +1,64 @@
+version: 3
+
+dotenv: ['.env']
+
+tasks:
+
+  # run
+
+  run:
+    deps: [run:server, run:tg, run:ui]
+
+  run:server:
+    dir: ./server
+    cmd: HOST=localhost PORT=${SERVER_DEV_PORT} go run ./cmd/demo
+
+  run:tg:
+    dir: ./tg
+    cmd: SERVER_BASE_URL=$SERVER_MODE://$SERVER_DEV_HOST:$SERVER_DEV_PORT npm run dev
+
+  run:ui:
+    dir: ./ui
+    cmd: VITE_SERVER_BASE_URL=$SERVER_MODE://$SERVER_DEV_HOST:$SERVER_DEV_PORT npm run dev
+
+  #buf
+
+  buf:
+    deps: [buf:api, buf:tg]
+
+  buf:api:
+    cmd: buf generate --template buf.gen.api.yaml proto/api
+
+  buf:tg:
+    cmd: buf generate --template buf.gen.tg.yaml proto/tg
+
+  # compose
+
+  compose:
+    cmd: docker compose up --build
+
+  compose:server:
+    cmd: docker compose up --build server
+
+  compose:tg:
+    cmd: docker compose up --build tg
+
+  compose:ui:
+    cmd: docker compose up --build ui
+
+  compose:stop:
+    cmd: docker compose stop
+
+  # logger
+
+  logs:
+    cmd: docker compose logs -t -f --tail=100
+
+  logs:server:
+    cmd: docker compose logs -t -f --tail=100 server
+
+  logs:tg:
+    cmd: docker compose logs -t -f --tail=100 tg
+
+  logs:ui:
+    cmd: docker compose logs -t -f --tail=100 ui

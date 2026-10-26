@@ -1,0 +1,12 @@
+config/
+
+*.log
+.npm/
+.eslintcache
+
+**/node_modules/
+**/dist/
+**/build/
+
+*.local
+.env*

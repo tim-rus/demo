@@ -1,0 +1,24 @@
+import path from "path"
+import tailwindcss from "@tailwindcss/vite"
+import react, { reactCompilerPreset } from '@vitejs/plugin-react'
+import babel from '@rolldown/plugin-babel'
+import { defineConfig,loadEnv } from 'vite'
+
+const env = loadEnv("", process.cwd(), '');
+
+// https://vite.dev/config/
+export default defineConfig({
+  plugins: [
+    react(),
+    babel({ presets: [reactCompilerPreset()] }),
+    tailwindcss()
+  ],
+  resolve: {
+    alias: {
+      "@": path.resolve(import.meta.dirname, "./src"),
+    },
+  },
+  server: {
+    port: parseInt(env.UI_DEV_PORT) || 3000,
+  }
+})

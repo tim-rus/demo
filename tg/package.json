@@ -1,0 +1,25 @@
+{
+  "name": "tg",
+  "version": "1.0.0",
+  "description": "",
+  "license": "ISC",
+  "author": "",
+  "type": "module",
+  "main": "src/index.ts",
+  "scripts": {
+    "build": "tsup src/index.ts --format esm --clean",
+    "run": "node dist/index.js",
+    "dev": "npx tsx src/index.ts",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "devDependencies": {
+    "@types/node": "^26.6.5",
+    "tsup": "^9.0.0",
+    "tsx": "^4.23.15",
+    "typescript": "^7.0.2"
+  },
+  "dependencies": {
+    "@connectrpc/connect": "^2.2.0",
+    "@connectrpc/connect-node": "^2.2.0"
+  }
+}
