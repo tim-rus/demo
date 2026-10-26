@@ -21,16 +21,11 @@ services:
       - demo_net
     # restart: unless-stopped
 
-  tg:
+  mcp:
     build:
       context: .
-      dockerfile: docker/tg.Dockerfile
-    container_name: tg
-    depends_on:
-      - server
-    environment:
-      TOKEN: ${TG_TOKEN}
-      SERVER_BASE_URL: http://server:${SERVER_DOCKER_PORT}
+      dockerfile: docker/mcp.Dockerfile
+    container_name: mcp
     networks:
       - demo_net
     # restart: unless-stopped

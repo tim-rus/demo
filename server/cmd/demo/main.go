@@ -3,7 +3,6 @@ package main
 import (
 	"context"
 	"demo/interal/proto/apigen/apigenconnect"
-	"demo/interal/proto/tggen/tggenconnect"
 	"log/slog"
 	"net"
 	"net/http"
@@ -43,16 +42,12 @@ func main() {
 func run(ctx context.Context) error {
 
 	// services
-
-	tgSvc := NewTGServce()
+	//
 	apiSvc := NewAPIServce()
 
 	// router
 
 	mux := http.NewServeMux()
-
-	tgPath, tgHandler := tggenconnect.NewPingServiceHandler(tgSvc)
-	mux.Handle(tgPath, tgHandler)
 
 	apiPath, apiHandler := apigenconnect.NewPingServiceHandler(apiSvc)
 	mux.Handle(apiPath, apiHandler)

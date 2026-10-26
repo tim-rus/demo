@@ -24,13 +24,10 @@ tasks:
   #buf
 
   buf:
-    deps: [buf:api, buf:tg]
+    deps: [buf:api]
 
   buf:api:
     cmd: buf generate --template buf.gen.api.yaml proto/api
-
-  buf:tg:
-    cmd: buf generate --template buf.gen.tg.yaml proto/tg
 
   # compose
 
@@ -43,8 +40,8 @@ tasks:
   compose:tg:
     cmd: docker compose up --build tg
 
-  compose:ui:
-    cmd: docker compose up --build ui
+  compose:mcp:
+    cmd: docker compose up --build mcp
 
   compose:stop:
     cmd: docker compose stop
