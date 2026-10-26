@@ -49,6 +49,9 @@ tasks:
   compose:stop:
     cmd: docker compose stop
 
+  compose:down:
+    cmd: docker compose down
+
   # logger
 
   logs:
