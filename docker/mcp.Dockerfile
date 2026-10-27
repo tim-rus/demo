@@ -9,8 +9,10 @@ RUN npm run build
 
 # runner
 FROM node:24-alpine AS runner
+ARG EXPOSE_PORT
 WORKDIR /app
 USER node
 COPY ./mcp/package.json ./mcp/package-lock.json* ./
 COPY --from=builder /app/dist ./dist
+EXPOSE ${EXPOSE_PORT}
 CMD ["npm", "run", "run"]
