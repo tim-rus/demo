@@ -1,6 +1,6 @@
-# Overview
+# Project Overview
 
-This is a demo project. 
+This is a demo project of an AI-powered service center simulator that generates synthetic customer requests for an imaginary electronics repair center and routes them through a realistic distributed pipeline — broker, RAG-based classifier, workers, etc — with a live UI for tracing requests, observing load, injecting failures, and tracking token/cost spend.  
 
 # Documentation
 
