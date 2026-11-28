@@ -2,6 +2,7 @@
 
 Type: grilling
 Status: open
+Blocked by: 01, 06
 Parent: ../map.md
 
 ## Question
