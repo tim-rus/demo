@@ -1,7 +1,7 @@
 # Research protocol capabilities
 
 Type: research
-Status: open
+Status: claimed
 Parent: ../map.md
 
 ## Question
