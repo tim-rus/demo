@@ -15,6 +15,7 @@
 ## Decisions so far
 
 <!-- one line per resolved ticket: gist + link. Gist only; detail stays in the ticket. -->
+- ConnectRPC/MCP paths per edge, serving constraints, and brief-vs-diagram mismatch: [protocol capabilities facts](./issues/03-protocol-capabilities.md).
 
 ## Not yet specified
 
