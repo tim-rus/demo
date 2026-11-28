@@ -20,5 +20,5 @@ use /caveman
 for commit messages use /caveman-commit  
 for questions always use widget  
 
-do not scan and do not edit ./prompts  
+do not scan and do not edit ./.prompts  
 do not edit ./AGENTS.md
